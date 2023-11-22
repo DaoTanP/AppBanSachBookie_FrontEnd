@@ -7,16 +7,13 @@ export class User
         public id: string = "",
         public username: string = "",
         public password: string = "",
-        public lastName: string | null = null,
-        public firstName: string = "",
+        public name: string = "",
         public dateOfBirth: string | null = null,
         public gender: boolean | null = null,
         public address: string | null = null,
         public email: string | null = null,
         public phoneNumber: string | null = null,
         public avatarImage: string | null = null,
-        public cardNumber: string = "",
-        public cardPassword: string = "",
         public favoriteBooks: any = [],
     )
     {
@@ -24,21 +21,18 @@ export class User
     }
 
 
-    public set value (v: any)
+    public set value (v: User)
     {
         this.id = v.id;
         this.username = v.username;
         this.password = v.password;
-        this.lastName = v.lastName;
-        this.firstName = v.firstName;
+        this.name = v.name;
         // this.dateOfBirth = convertCSToReadableDate(v.dateOfBirth);
         this.gender = v.gender;
         this.address = v.address;
         this.email = v.email;
         this.phoneNumber = v.phoneNumber;
         this.avatarImage = v.avatarImage;
-        this.cardNumber = v.cardNumber;
-        this.cardPassword = v.cardPassword;
         this.favoriteBooks = v.favoriteBooks;
     }
 

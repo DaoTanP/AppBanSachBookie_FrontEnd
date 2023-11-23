@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MainLayoutComponent } from './components/layouts/main-layout/main-layout.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RegisterComponent,
     MainLayoutComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@
           <form  [formGroup]="registerForm"(ngSubmit)="register()" id="loginForm" class="d-flex flex-column">
               <div class="mb-4 w-100">
                   <input type="text" class="form-control" formControlName="username" aria-describedby="helpUsernameId"
-                      placeholder="Tên đăng nhập">
+                      placeholder="Tên đăng ký">
                   <div class="text-danger">
                       <!-- <div *ngIf="username.errors?.['required']">
                           <small id="helpUsernameId">Tên đăng nhập không được bỏ trống</small>
@@ -40,7 +40,7 @@
                 </div> -->
             </div>
           </form>
-          <button type="submit" class="btn btn-primary d-block w-100 rounded-pill py-2" form="loginForm">Đăng </button>
+          <button type="submit" class="btn btn-primary d-block w-100 rounded-pill py-2" form="loginForm">Đăng ký</button>
           <hr>
           <p class="text-center">Đăng ký bằng</p>
           <div class="d-flex gap-2 justify-content-center">

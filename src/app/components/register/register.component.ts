@@ -8,9 +8,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 
 export class RegisterComponent {
-  public registerForm: FormGroup = new FormGroup({
+  public registerForm: FormGroup = new FormGroup({});
 
-  });
   public register (): void
   {}
 }

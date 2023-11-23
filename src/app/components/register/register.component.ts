@@ -12,7 +12,5 @@ export class RegisterComponent {
 
   });
   public register (): void
-  {
-
-  }
+  {}
 }

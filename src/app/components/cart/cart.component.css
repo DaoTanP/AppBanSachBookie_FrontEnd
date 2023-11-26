@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    
+
 }
 
 .cart-img {
@@ -15,7 +15,7 @@
 .product-info {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .product-info > div {
@@ -47,7 +47,7 @@
     width: 50px; /* Adjust the width as needed */
 }
 .btn-number{
-    
+
 }
 .form-check-input{
     margin-right: 20px;

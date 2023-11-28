@@ -1,0 +1,135 @@
+<p>payments works!</p>
+<div class="container mb-5">
+  <div class="row">
+    <!-- Form nhập thông tin  -->
+      <div class="col-md-6 order-md-1">
+          <h4 class="mb-3">Nhập thông tin</h4>
+          <form class="needs-validation" novalidate="">
+              <div class="row">
+                  <div class="col-md-6 mb-3">
+                      <label for="firstName" class="mb-1">Tên người nhận*</label>
+                      <input type="text" class="form-control" id="firstName" placeholder="Nhập tên hiển thị..." value="" required="">
+                      <!-- <div class="invalid-feedback"> Valid first name is required. </div> -->
+                  </div>
+                  <div class="col-md-6 mb-3">
+                      <label for="lastName" class="mb-1">Số điện thoại*</label>
+                      <input type="text" class="form-control" id="lastName" placeholder="Nhập số điện thoại..." value="" required="">
+                      <!-- <div class="invalid-feedback"> Valid last name is required. </div> -->
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="mb-2">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="email@example.com">
+                <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4 mb-3">
+                      <label for="country" class="mb-1">Tỉnh*</label>
+                      <select class="custom-select d-block w-100" id="country" required="">
+                          <option value="">Chọn tỉnh...</option>
+                          <option>BinhDinh</option>
+                          <option>KhanhHoa</option>
+                          <option>BinhDuong</option>
+                      </select>
+                      <!-- <div class="invalid-feedback"> Please select a valid country. </div> -->
+                  </div>
+                  <div class="col-md-4 mb-3">
+                      <label for="state" class="mb-1">Huyện*</label>
+                      <select class="custom-select d-block w-100" id="state" required="">
+                          <option value="">Chọn huyện...</option>
+                          <option>TuyPhuoc</option>
+                          <option>VanNinh</option>
+                          <option>Hđ.TruongSa</option>
+                      </select>
+                      <!-- <div class="invalid-feedback"> Please provide a valid state. </div> -->
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="state" class="mb-1">Xã*</label>
+                    <select class="custom-select d-block w-100" id="state" required="">
+                        <option value="">Chọn xã...</option>
+                        <option>PhuocLoc</option>
+                        <option>PhuocThuan</option>
+                        <option>CatTien</option>
+                        <option>VinhHiep</option>
+                    </select>
+                    <!-- <div class="invalid-feedback"> Please provide a valid state. </div> -->
+                </div>
+              </div>
+              <hr class="mb-4">
+              <div class="mb-3">
+                <label for="address" class="mb-2"> Địa chỉ chi tiết*</label>
+                <input type="text" class="form-control" id="address" placeholder="Nhập chi tiết địa chỉ..." required="">
+                <div class="invalid-feedback"> Please enter your shipping address. </div>
+              </div>
+              <!-- <hr class="mb-4"> -->
+              <div class="mb-3">
+                <label for="address" class="mb-2"> Tin nhắn</label>
+                <input type="text" class="form-control" id="address" placeholder="Lưu ý cho người bán..." required="">
+                <div class="invalid-feedback"> Please enter your shipping address. </div>
+              </div>
+
+
+            <h4 class="fst-italic fs-6">(*) Thông tin bắt buộc</h4>
+          </form>
+      </div>
+      <!-- Form tính tiền -->
+      <div class="col-md-6 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="">Sản phẩm mua</span>
+            <span class="">(3)</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <div class="row">
+            <li class="center list-group-item d-flex justify-content-between lh-condensed">
+                <h6 class="col-md-3 my-0">Ảnh sản phẩm</h6>
+                <h6 class="col-md-3 my-0">Tên sản phẩm</h6>
+                <h6 class="col-md-3 my-0">Số lượng</h6>
+                <h6 class="col-md-3 my-0">Giá tiền</h6>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between lh-condensed">
+                <div class="col-md-3">
+                  <img class="img-fluid w-20 h-20" src="https://cdn0.fahasa.com/media/catalog/product/d/n/dntttttuntitled.png" alt="">
+                </div>
+                  <h6 class="col-md-3 my-0">Đắc nhân tâm</h6>
+                <div class="col-md-3 my-0">
+                  <h6>x1</h6>
+                </div>
+                <div class="col-md-3 my-0">
+                  <h6 class="color-price">10 VND</h6>
+                </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between lh-condensed">
+              <div class="col-md-3">
+                <img class="img-fluid w-20 h-20" src="https://cdn0.fahasa.com/media/catalog/product/d/n/dntttttuntitled.png" alt="">
+              </div>
+                <h6 class="col-md-3 my-0">Đắc nhân tâm</h6>
+              <div class="col-md-3 my-0">
+                <h6>x1</h6>
+              </div>
+              <div class="col-md-3 my-0">
+                <h6 class="color-price">10 VND</h6>
+              </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between lh-condensed">
+              <div class="col-md-3">
+                <img class="img-fluid w-20 h-20" src="https://cdn0.fahasa.com/media/catalog/product/d/n/dntttttuntitled.png" alt="">
+              </div>
+                <h6 class="col-md-3 my-0">Đắc nhân tâm</h6>
+              <div class="col-md-3 my-0">
+                <h6>x1</h6>
+              </div>
+              <div class="col-md-3 my-0">
+                <h6 class="color-price">10 VND</h6>
+              </div>
+            </li>
+            <li class="list-group-item d-flex">
+                <span>Tổng tiền (VND):</span>
+            </li>
+          </div>
+        </ul>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" routerLink="/">Thanh toán</button>
+        </div>
+    </div>
+  </div>
+</div>

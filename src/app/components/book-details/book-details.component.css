@@ -1,0 +1,28 @@
+/* styles.css hoặc styles.scss */
+
+.rating span {
+  font-size: 16px;
+  color: yellow;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.text-price {
+  color: rgb(216, 58, 58);
+}
+
+.share-btn {
+  margin-left: 160px;
+}
+
+.btn-shop {
+  margin:0px 0px 6px 85px;
+}
+
+.icon-size {
+  font-size: 1.6em;
+}
+
+.user span{
+  margin-left: 10px;
+}

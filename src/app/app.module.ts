@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
+import { PaymentsComponent } from './components/payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
     HomeComponent,
     PageNotFoundComponent,
     CartComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,

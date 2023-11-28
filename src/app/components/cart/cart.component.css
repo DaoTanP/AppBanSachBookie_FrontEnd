@@ -1,58 +1,70 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .cart-img {
-    /* Điều chỉnh các thuộc tính hình ảnh theo nhu cầu của bạn */
-    max-width: 100px;
-    margin-right: 10px;
+  /* Điều chỉnh các thuộc tính hình ảnh theo nhu cầu của bạn */
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.hover-cursor:hover {
+  cursor: pointer;
 }
 
 .product-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
 }
 
-.product-info > div {
-    margin-right: 20px;
+.product-info>div {
+  margin-right: 20px;
 }
 
 .quantity-section {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 .quantity-section input[type="number"] {
-    width: 50px;
-    height: 20px;
+  width: 50px;
+  height: 20px;
 }
-.quantity-section button{
-    width: 40px;
-    height: 20px;
+
+.quantity-section button {
+  width: 40px;
+  height: 20px;
 }
+
 .quantity-section button,
 .quantity-section input[type="number"] {
-    margin: 0 5px; /* Khoảng cách giữa button và input number */
+  margin: 0 5px;
+  /* Khoảng cách giữa button và input number */
 }
+
 .product-info div label {
-    display: block; /* Hiển thị mỗi label trên một dòng mới */
-    margin-bottom: 5px;
-    text-align: center; /* Khoảng cách giữa các label */
+  display: block;
+  /* Hiển thị mỗi label trên một dòng mới */
+  margin-bottom: 5px;
+  text-align: center;
+  /* Khoảng cách giữa các label */
 }
+
 .input-small {
-    width: 50px; /* Adjust the width as needed */
-}
-.btn-number{
-
-}
-.form-check-input{
-    margin-right: 20px;
+  width: 50px;
+  /* Adjust the width as needed */
 }
 
-.txt-color{
-    color: red;
+.btn-number {}
+
+.form-check-input {
+  margin-right: 20px;
+}
+
+.txt-color {
+  color: red;
 }

@@ -3,18 +3,38 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                <li class="breadcrumb-item"><a href="#">Details Products</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Book</li>
             </ol>
         </nav>
     </div>
 </div>
 <div class="container mb-5">
     <div class="row">
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-2">
             <div class="img-container me-xl-5 me-auto">
                 <!-- <img class="img-fluid w-100" src="{{book?.imgUrl}}" alt=""> -->
                 <img class="img-fluid w-70 h-70" src="https://cdn0.fahasa.com/media/catalog/product/d/n/dntttttuntitled.png" alt="">
+                <div class="mt-2 form-group">
+                  <span>Đánh giá</span>
+                  <div class="rating">
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star"></span>
+                    <i class="share-btn bi bi-share-fill"></i>
+                  </div>
+                </div>
+                <div class="col mt-4">
+                  <div class="row">
+                    <div class="user col">
+                      <i class="icon-size bi-person-circle"></i>
+                      <span class="">Bookie.Shop</span>
+                      <a class="btn-shop btn btn-outline-light" href="#" role="button">Xem shop</a>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
         <div class="col-md">
@@ -22,11 +42,13 @@
             <h4 class="mb-3">Đắc Nhân Tâm</h4>
             <hr class="mb-4">
             <div class="row">
-                <div class="col-md-3 col">
+                <div class="col-md-4 col">
                     <p>Tác giả:</p>
                     <p>Nhà xuất bản:</p>
                     <p>Năm xuất bản:</p>
+                    <p>Giá:</p>
                 </div>
+
                 <div class="col">
                     <!-- <p>{{book?.author}}</p>
                     <p>{{book?.publisher}}</p>
@@ -34,20 +56,101 @@
                     <p>Hoàng Vinh</p>
                     <p>Hoàng Vinh Entertaiment</p>
                     <p>2002</p>
+                    <p class="text-price">15.000đ</p>
                 </div>
             </div>
-            <form>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Thêm vào giỏ hàng</button>
-            </form>
+            <hr class="mb-4">
+            <div class="row mt-5">
+              <div class="col-md-4 col">
+                <a class="btn btn-primary" href="/cart" role="button">Thêm vào giỏ hàng</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-primary" href="/payment" role="button">Mua ngay</a>
+              </div>
+            </div>
         </div>
     </div>
 </div>
+<hr class="container">
 <div class="container mb-5">
     <div class="row mb-4">
-        <h4 class="mb-0">Giới thiệu</h4>
+        <h4 class="mb-0">Mô tả sản phẩm</h4>
     </div>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum dolores saepe hic, ab ullam officiis aut deleniti
-        similique suscipit aliquid architecto, quod quo repellendus odio? Provident sint quasi magni minima?</p>
+    <div class="row">
+      <div class="col">
+        <p>Mã hàng:</p>
+        <p>Tác giả:</p>
+        <p>Nhà xuất bản:</p>
+        <p>Năm xuất bản:</p>
+        <p>Số trang:</p>
+        <p>Nội dung: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum ipsam voluptatibus itaque beatae distinctio aperiam, facilis impedit, unde minima dolor corporis repellendus nam iste sit iusto, debitis cupiditate tenetur minus!</p>
+      </div>
+    </div>
+    <hr class="container">
+    <h4 class="mb-3 mt-4">Đánh giá</h4>
+    <div class="col mb-4">
+      <div class="row">
+        <div class="user col">
+          <i class="icon-size bi bi-person-fill"></i>
+          <span class="">Zinh Zẻ Zách</span>
+        </div>
+      </div>
+      <div class="mt-2 form-group">
+        <div class="rating">
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star"></span>
+      </div>
+    </div>
+      <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ad fugiat molestiae enim animi eaque deleniti maiores et iste ex aspernatur mollitia saepe, eos, illo soluta expedita. Impedit, modi nulla.</span>
+        <!-- <div class="mt-2 row">
+          <div class="col-auto">
+            <i class="bi-hand-thumbs-down"></i>
+          </div>
+          <div class="col-auto">
+            <i class="bi bi-hand-thumbs-up-fill"></i>
+          </div>
+          <div class="col-auto">
+            <span class="">Trả lời</span>
+          </div>
+        </div> -->
+    </div>
+    <div class="col mb-4">
+      <div class="row">
+        <div class="user col">
+          <i class="icon-size bi bi-person-fill"></i>
+          <span class="">Híu Giấu Tên</span>
+        </div>
+      </div>
+        <div class="mt-2 form-group">
+          <div class="rating">
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+        </div>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ad fugiat molestiae enim animi eaque deleniti maiores et iste ex aspernatur mollitia saepe, eos, illo soluta expedita. Impedit, modi nulla.</span>
+    </div>
+    <div class="mt-4 col mb-4">
+      <div class="row">
+        <div class="user col">
+          <i class="icon-size bi bi-person-fill"></i>
+          <span class="">Phát Tay To</span>
+        </div>
+      </div>
+        <div class="mt-2 form-group">
+          <div class="rating">
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-fill"></span>
+            <span class="bi bi-star-half"></span>
+        </div>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ad fugiat molestiae enim animi eaque deleniti maiores et iste ex aspernatur mollitia saepe, eos, illo soluta expedita. Impedit, modi nulla.</span>
+    </div>
 </div>
 <!--
 <app-book-scroll-list title="Cùng tác giả"></app-book-scroll-list>

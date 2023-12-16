@@ -7,13 +7,14 @@ export class User
         public id: string = "",
         public username: string = "",
         public password: string = "",
-        public name: string = "",
+        public displayName: string = "",
         public dateOfBirth: string | null = null,
         public gender: boolean | null = null,
         public address: string | null = null,
         public email: string | null = null,
         public phoneNumber: string | null = null,
         public avatarImage: string | null = null,
+        public role: string = "buyer",
         public favoriteBooks: any = [],
     )
     {
@@ -26,13 +27,14 @@ export class User
         this.id = v.id;
         this.username = v.username;
         this.password = v.password;
-        this.name = v.name;
+        this.displayName = v.displayName;
         // this.dateOfBirth = convertCSToReadableDate(v.dateOfBirth);
         this.gender = v.gender;
         this.address = v.address;
         this.email = v.email;
         this.phoneNumber = v.phoneNumber;
         this.avatarImage = v.avatarImage;
+        this.role = v.role;
         this.favoriteBooks = v.favoriteBooks;
     }
 

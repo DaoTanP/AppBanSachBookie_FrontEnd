@@ -9,7 +9,7 @@ import { User } from '../models/user';
 export class HttpService
 {
   private BOOK_API_URL = 'https://express-api.dao-tan-phattan.repl.co/books/freeAccess';
-  private USER_API_URL = 'https://express-api.dao-tan-phattan.repl.co/users';
+  private USER_API_URL = 'http://localhost:3000/users';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,10 +23,10 @@ export class HttpService
     return this.httpClient.post(this.USER_API_URL + '/register', user);
   }
 
-  // public usernameExists (username: string): Observable<any>
-  // {
-  //   return this.httpClient.post(this.USER_API_URL + "/usernameExists", { username });
-  // }
+  public usernameAvailable (username: string): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + "/usernameAvailable", { username }, { observe: 'response', responseType: "text" });
+  }
 
   // public getUserData (id: string): Observable<any>
   // {

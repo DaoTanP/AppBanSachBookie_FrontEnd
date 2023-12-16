@@ -7,8 +7,7 @@ import { Book } from 'src/app/models/book';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
-export class BookDetailsComponent
-{
+export class BookDetailsComponent {
   protected book: Book | undefined;
   constructor(private route: ActivatedRoute)
   {

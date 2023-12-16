@@ -1,48 +1,122 @@
-<div>
-    <form class="container ">
-        <input class="form-check-input" type="checkbox" value="" id="check1">
-        <img class="cart-img" src="https://tramsach.vn/wp-content/uploads/2021/06/12-e1653631534295.png">
-        <div class="content-wrapper">
-            <div class="product-info">
-                <div>
-                    <label class="form-check-label" for="flexCheckDefault"> Đắc Nhân Tâm </label>
-                    <label class="form-check-label txt-color" for="flexCheckDefault"> 57.620đ </label>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row-md-3 col-md-offset-3">
-                    <div class="input-group"> <span class="input-group-btn">
-                            <button type="button" class="btn btn- btn-number" data-type="minus" data-field="quant[2]"> +
-                                <span class="glyphicon glyphicon-minus"></span>
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="h5">Giỏ hàng</th>
+                            <th scope="col">Thể loại</th>
+                            <th scope="col">Số Lượng</th>
+                            <th scope="col">Giá</th>
+                            <button class="btn px-2 btn-primary">Xóa tất cả
                             </button>
-                        </span>
-                        <input name="quant[2]" class="form-control input-number input-small" value="1" min="1" max="99"
-                            type="text">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn- btn-number " data-type="plus" data-field="quant[2]"> -
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button></span>
-                    </div>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <div class="d-flex align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    </div>
+                                    <img routerLink="/book"
+                                        src="https://tramsach.vn/wp-content/uploads/2021/06/12-e1653631534295.png"
+                                        class="img-fluid rounded-3" style="width: 120px;" alt="Book">
+                                    <div class="flex-column ms-4">
+                                        <p class="mb-2">Đắc Nhân Tâm</p>
+                                        <p class="mb-0">Dale Carnegie</p>
+                                    </div>
+                                </div>
+
+                                
+                            </th>
+                            <td class="align-middle">
+                                <p class="mb-0" style="font-weight: 500;">Tiểu Thuyết</p>
+                            </td>
+                            <td class="align-middle">
+                                <div class="d-flex flex-row">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button class="btn btn-link px-2 btn-primary"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                            <i class="bi bi-dash-circle-fill"></i>
+                                        </button>
+                                        <input id="form1" min="0" name="quantity" value="2" type="number"
+                                            class="form-control form-control-sm" style="width: 50px;" />
+
+                                        <button class="btn btn-link px-2 btn-primary"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                            <i class="bi bi-plus-circle-fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <p class="mb-0" style="font-weight: 500;">52.725đ</p>
+                            </td>
+                            <td>
+                                <button class="btn btn-link px-2 btn-primary">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="border-bottom-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    </div>
+                                    <img src="https://i.imgur.com/Oj1iQUX.webp" class="img-fluid rounded-3"
+                                        style="width: 120px;" alt="Book">
+                                    <div class="flex-column ms-4">
+                                        <p class="mb-2">Homo Deus: A Brief History of Tomorrow</p>
+                                        <p class="mb-0">Yuval Noah Harari</p>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="align-middle border-bottom-0">
+                                <p class="mb-0" style="font-weight: 500;">Bút Ký</p>
+                            </td>
+                            <td class="align-middle border-bottom-0">
+                                <div class="d-flex flex-row">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button class="btn btn-link px-2 btn-primary"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                            <i class="bi bi-dash-circle-fill"></i>
+                                        </button>
+                                        <input id="form1" min="0" name="quantity" value="2" type="number"
+                                            class="form-control form-control-sm" style="width: 50px;" />
+
+                                        <button class="btn btn-link px-2 btn-primary"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                            <i class="bi bi-plus-circle-fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle border-bottom-0">
+                                <p class="mb-0" style="font-weight: 500;">60.548đ</p>
+                            </td>
+                            <td>
+                                <button class="btn btn-link px-2 btn-primary">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <button type="button" class="btn btn-danger"> X </button>
-    </form>
-    <hr>
-</div>
-<div class="mb-5"></div>
-<div>
-    <form class="container">
-        <div>
-            <input class="form-check-input" type="checkbox" value="" id="checkAll">
-            <label class="form-check-label" for="checkAll"> Tất cả </label>
+    </div>
+    <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Tất cả
+            </label>
+            
         </div>
-        <div class="product-info">
-            <div>
-                <label class="form-check-label" for="flexCheckDefault"> Tổng thanh toán </label>
-                <label class="form-check-label txt-color" for="flexCheckDefault"> 57.620đ </label>
-            </div>
-        </div>
-        <button type="button" class="btn btn-info"> Đặt hàng </button>
-    </form>
+        <p class="mb-2">Tổng thanh toán: </p>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" routerLink="/payment">Đặt hàng</button>
+    </div>
 </div>

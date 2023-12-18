@@ -3,7 +3,7 @@ import { HomeComponent } from "../components/home/home.component";
 import { BookDetailsComponent } from "../components/book-details/book-details.component";
 import { CartComponent } from "../components/cart/cart.component";
 import { BookSearchComponent } from "../components/book-search/book-search.component";
-// import { ProfileComponent } from "../components/profile/profile.component";
+import { ProfileComponent } from "../components/profile/profile.component";
 // import { AuthGuardService } from "../services/auth-guard.service";
 import { PaymentsComponent } from "../components/payments/payments.component";
 
@@ -16,5 +16,5 @@ export const mainLayoutRoute: Routes = [
     { path: 'payment', component: PaymentsComponent },
 
     // { path: 'book/:id', component: BookDetailsComponent },
-    // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+    { path: 'profile', component: ProfileComponent},
 ]

@@ -15,6 +15,6 @@ export const mainLayoutRoute: Routes = [
     { path: 'cart', component: CartComponent },
     { path: 'payment', component: PaymentsComponent },
 
-    // { path: 'book/:id', component: BookDetailsComponent },
-    { path: 'profile', component: ProfileComponent},
+    { path: 'book/:id', component: BookDetailsComponent },
+    { path: 'profile', component: ProfileComponent },
 ]

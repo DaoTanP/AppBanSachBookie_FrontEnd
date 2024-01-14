@@ -1,12 +1,13 @@
-<div class="position-fixed z-3 bg-body-secondary bg-opacity-50 w-100" style="height: 100%;">
+<div *ngIf="waiting" class="position-fixed z-3 bg-body-secondary bg-opacity-50 w-100" style="height: 100%;">
   <div class="d-flex justify-content-center align-items-center w-100" style="height: 100%;">
-    <!-- <div class="spinner-border text-primary" role="status">
+    <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
-    </div> -->
+    </div>
   </div>
 </div>
 
-<div id="alert-container" class="container"> <!--class="position-fixed z-3 w-100 px-5" style="top: 4rem;" -->
+<div id="alert-container" class="position-sticky z-3 w-100 pb-2" style="top: 4rem;">
+  <!--class="position-sticky z-3 w-100 px-5" style="top: 4rem;" -->
   <style>
     .alert-container>* {
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -18,16 +19,16 @@
   <div class="row">
     <div class="col-12 col-md-auto me-lg-3">
       <div class="position-relative">
-        <img src="https://memes.co.in/memes/update/uploads/2021/12/InShot_20211209_222013681.jpg" alt="avatar"
+        <img src="{{userInfo.avatar}}" alt="avatar"
           class="m-auto mb-2 m-lg-0 d-block rounded-circle img-fluid border border-5 border-light-subtle shadow-sm avatar">
         <label for="avatarUpload"
           class="position-absolute bottom-0 start-50 btn bg-body-secondary rounded-circle py-2 border-2 border-secondary-subtle focus-ring focus-ring-primary"
           style="transform: translateX(75%);">
           <span class="bi bi-camera-fill"></span>
-          <input id="avatarUpload" type="file" class="visually-hidden">
+          <input id="avatarUpload" type="file" class="visually-hidden" (change)="uploadAvatar($event)">
         </label>
       </div>
-      <p class="h4 text-center mb-2"></p>
+      <p class="h4 text-center mb-2">{{userInfo.displayName}}</p>
       <button class="btn btn-primary mb-2 py-1 d-block w-100" data-bs-toggle="modal" data-bs-target="#infoModal">Chỉnh
         sửa thông tin</button>
       <button class="btn btn-outline-danger py-1 mb-2 d-block w-100" data-bs-toggle="modal"
@@ -44,49 +45,41 @@
           <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-panel" type="button"
             role="tab" aria-controls="password-panel" aria-selected="false">Đổi mật khẩu</button>
         </li>
-        <!-- <li class="nav-item" role="presentation">
-          <button class="nav-link" id="libraryCard-tab" data-bs-toggle="tab" data-bs-target="#libraryCard-panel"
-            type="button" role="tab" aria-controls="libraryCard" aria-selected="false">Thẻ thư viện</button>
-        </li> -->
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="favorite-tab" data-bs-toggle="tab" data-bs-target="#favorite" type="button"
             role="tab" aria-controls="favorite" aria-selected="false">Yêu thích</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button"
-            role="tab" aria-controls="history" aria-selected="false">Lịch sử mua</button>
+            role="tab" aria-controls="history" aria-selected="false">Lịch sử mua hàng</button>
         </li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane py-3 active position-relative" id="info" role="tabpanel" aria-labelledby="info-tab">
           <div class="d-flex flex-column gap-3">
-            <!-- <div class="row justify-content-center align-items-center g-2">
-              <div class="col-3">Số thẻ thư viện</div>
-              <div class="col"></div>
-            </div> -->
             <div class="row justify-content-center align-items-center g-2">
-              <div class="col-3">Họ và Tên</div>
-              <div class="col"></div>
+              <div class="col-3">Tên</div>
+              <div class="col">{{userInfo.displayName}}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Giới tính</div>
-              <div class="col"></div>
+              <div class="col">{{userInfo.gender !== null ? (userInfo.gender ? 'Nam' : 'Nữ') : ''}}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Ngày sinh</div>
-              <div class="col"></div>
+              <div class="col">{{userInfo.dob?.toLocaleDateString()}}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Số điện thoại</div>
-              <div class="col"></div>
+              <div class="col">{{userInfo.phoneNumber}}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Email</div>
-              <div class="col"></div>
+              <div class="col">{{userInfo.email}}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Địa chỉ</div>
-              <div class="col"></div>
+              <div class="col">{{userInfo.address}}</div>
             </div>
           </div>
         </div>
@@ -116,32 +109,15 @@
             <div class="col-3"></div>
             <div class="col">
               <button class="btn btn-primary"
-                >Thay đổi mật khẩu
-              </button>
+                [disabled]="!passwordNew.value || passwordNew.value !== passwordNew2.value"
+                (click)="changePassword(passwordOld.value, passwordNew.value)">Thay đổi mật
+                khẩu</button>
             </div>
           </div>
         </div>
-        <div class="tab-pane py-3" id="libraryCard-panel" role="tabpanel" aria-labelledby="libraryCard-tab">
-          <div class="row mb-3">
-            <div class="col-3"><label for="cardNumber" class="form-label ">Nhập số thẻ</label></div>
-            <div class="col"><input type="text" [ngModel] #cardNumber id="cardNumber" class="form-control">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-3"><label for="cardPassword" class="form-label">Nhập mật khẩu thẻ</label></div>
-            <div class="col"><input type="password" [ngModel] #cardPassword id="cardPassword" class="form-control">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-3"></div>
-            <div class="col">
-              <button class="btn btn-primary">Liên kết thẻ thư viện</button>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane py-3" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
-          <!-- <app-book-grid *ngIf="!waiting" [data]="favorites"></app-book-grid> -->
-        </div>
+        <!-- <div class="tab-pane py-3" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
+          <app-book-grid *ngIf="!waiting" [data]="favorites"></app-book-grid>
+        </div> -->
         <div class="tab-pane py-3" id="history" role="tabpanel" aria-labelledby="history-tab">Lorem ipsum dolor sit
           amet
           consectetur, adipisicing elit. In quod velit iste omnis debitis error, magni neque atque porro quidem?</div>
@@ -158,22 +134,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="editInfoForm">
-          <div class="row">
-            <div class="col mb-3 w-100">
-              <label for="lastName" class="form-label">Họ đệm</label>
-              <input type="text" id="lastName" class="form-control" formControlName="lastName"
-                aria-describedby="helpLastNameId">
-            </div>
-            <div class="col mb-3 w-100">
-              <label for="firstName" class="form-label">Tên</label>
-              <input type="text" id="firstName" class="form-control">
-              <div class="text-danger">
-                <div>
-                  <small id="helpFirstNameId">Tên không được bỏ trống</small>
-                </div>
-              </div>
-            </div>
+        <form [formGroup]="editInfoForm" (ngSubmit)="submitChange()" id="editInfoForm">
+          <div class="col mb-3 w-100">
+            <label for="displayName" class="form-label">Tên hiển thị</label>
+            <input type="text" id="displayName" class="form-control" formControlName="displayName"
+              aria-describedby="helpDisplayNameId">
           </div>
           <div class="col mb-3 w-100">
             <div class="form-label">Giới tính</div>
@@ -212,30 +177,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-        <button type="submit" form="editInfoForm" class="btn btn-primary" data-bs-toggle="modal"
-          data-bs-target="#infoModal2">Lưu thay đổi</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="infoModal2" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="infoModalLabel">Xác nhận thay đổi</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="col mb-3 w-100">
-          <label for="passwordEdit" class="form-label">Nhập mật khẩu để xác thực</label>
-          <input type="password" id="passwordEdit" class="form-control"
-            aria-describedby="helpPasswordId">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-        <button class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>
+        <button type="submit" form="editInfoForm" class="btn btn-primary" data-bs-dismiss="modal">Lưu thay đổi</button>
       </div>
     </div>
   </div>
@@ -249,15 +191,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="col mb-3 w-100">
-          <label for="passwordDelete" class="form-label">Nhập mật khẩu để xác thực</label>
-          <input type="password" id="passwordDelete" class="form-control"
-            aria-describedby="helpPasswordId">
-        </div>
+        <p>Bạn có chắc muốn xóa tài khoản? Mọi dữ liệu được lưu trong tài khoản sẽ bị mất.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
-        <button class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button>
+        <button class="btn btn-danger" (click)="delete()" data-bs-dismiss="modal">Xác nhận</button>
       </div>
     </div>
   </div>

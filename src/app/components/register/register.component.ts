@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, map, of } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { AlertService, AlertType } from 'src/app/services/alert.service';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -37,8 +39,16 @@ export class RegisterComponent
     agreement: this.agreement
   }, [this.formGroupMatchValidator('confirmPassword', 'password')]);
 
-  constructor(private httpService: HttpService, private router: Router, private alertService: AlertService)
+  constructor(
+    private httpService: HttpService,
+    private dataService: DataService,
+    private alertService: AlertService,
+    private authGuardService: AuthGuardService,
+    private router: Router,
+  )
   {
+    if (authGuardService.isLoggedIn)
+      router.navigate(['home']);
   }
 
   public matchValidator (controlToMatch: AbstractControl<any, any>): ValidatorFn
@@ -102,6 +112,7 @@ export class RegisterComponent
       next: async res =>
       {
         this.waiting = false;
+        this.authGuardService.login(res.accessToken);
         this.alertService.appendAlert('Đăng ký thành công, chuyển hướng về trang chủ',
           AlertType.success, 3, 'form-wrapper');
         await new Promise(f => setTimeout(f, 3000));

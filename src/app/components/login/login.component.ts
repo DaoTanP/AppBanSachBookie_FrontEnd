@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpService } from 'src/app/services/http.service';
 import { AlertService, AlertType } from 'src/app/services/alert.service';
+import { DataService } from 'src/app/services/data.service';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +23,17 @@ export class LoginComponent
     username: this.username,
     password: this.password,
   });
-  constructor(private httpService: HttpService, private router: Router, private alertService: AlertService)
-  {
 
+  constructor(
+    private httpService: HttpService,
+    private dataService: DataService,
+    private alertService: AlertService,
+    private authGuardService: AuthGuardService,
+    private router: Router,
+  )
+  {
+    if (authGuardService.isLoggedIn)
+      router.navigate(['home']);
   }
 
   public login (): void
@@ -47,6 +57,9 @@ export class LoginComponent
       next: async res =>
       {
         this.waiting = false;
+        console.log(res);
+
+        this.authGuardService.login(res.accessToken);
         this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',
           AlertType.success, 3, 'form-wrapper');
         await new Promise(f => setTimeout(f, 3000));
@@ -57,7 +70,7 @@ export class LoginComponent
         switch (err.status)
         {
           case 404:
-            this.alertService.appendAlert('Tài khoản không tồn tại, kiểm tra lại tên đăng nhập hoặc mật khẩu', AlertType.danger, 0, 'form-wrapper');
+            this.alertService.appendAlert('Tên đăng nhập hoặc mật khẩu không đúng', AlertType.danger, 0, 'form-wrapper');
             break;
 
           case 0:

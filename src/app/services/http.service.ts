@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService
 {
-  private BOOK_API_URL = 'https://express-api.dao-tan-phattan.repl.co/books/freeAccess';
-  private USER_API_URL = 'http://localhost:3000/users';
+  private BOOK_API_URL = 'http://localhost:3000/book';
+  private USER_API_URL = 'http://localhost:3000/user';
+  private requestHeaders = {
+    'Authorization': 'Bearer ' + this.dataService.getSession('access_token'),
+  }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private dataService: DataService) { }
 
   public login (user: User): Observable<any>
   {
@@ -28,27 +32,30 @@ export class HttpService
     return this.httpClient.post(this.USER_API_URL + "/usernameAvailable", { username }, { observe: 'response', responseType: "text" });
   }
 
-  // public getUserData (id: string): Observable<any>
-  // {
-  //   console.log('requesting user data');
+  public getUserInfo (id: string = ''): Observable<any>
+  {
+    console.log('requesting user info');
 
-  //   return this.httpClient.get(this.USER_API_URL + '/' + id);
-  // }
+    if (id != '')
+      return this.httpClient.get(this.USER_API_URL, { headers: this.requestHeaders });
 
-  // public editUser (user: any): Observable<any>
-  // {
-  //   return this.httpClient.put(this.USER_API_URL, user);
-  // }
+    return this.httpClient.get(this.USER_API_URL + '/' + id, { headers: this.requestHeaders });
+  }
 
-  // public deleteUser (user: User): Observable<any>
-  // {
-  //   return this.httpClient.post(this.USER_API_URL + '/delete', user, { observe: 'response', responseType: "text" });
-  // }
+  public editUserInfo (userInfoChanges: any): Observable<any>
+  {
+    return this.httpClient.patch(this.USER_API_URL, userInfoChanges, { headers: this.requestHeaders });
+  }
 
-  // public uploadAvatar ({ username, imageBytes }: any): Observable<any>
-  // {
-  //   return this.httpClient.post(this.USER_API_URL + '/uploadAvatar', { username, imageBytes });
-  // }
+  public deleteUser (): Observable<any>
+  {
+    return this.httpClient.delete(this.USER_API_URL, { headers: this.requestHeaders, observe: 'response', responseType: "text" });
+  }
+
+  public uploadAvatar (image: any): Observable<any>
+  {
+    return this.httpClient.patch(this.USER_API_URL, image, { headers: this.requestHeaders });
+  }
 
   // public changeUserPassword ({ username, oldPassword, newPassword }: any): Observable<any>
   // {
@@ -73,10 +80,10 @@ export class HttpService
   //   return this.httpClient.get(this.BOOK_API_URL + '/randomRecommendation');
   // }
 
-  // public getCategories (): Observable<any>
-  // {
-  //   return this.httpClient.get(this.BOOK_API_URL + '/category');
-  // }
+  public getCategories (): Observable<any>
+  {
+    return this.httpClient.get(this.BOOK_API_URL + '/category');
+  }
 
   // public getAuthors (): Observable<any>
   // {
@@ -88,16 +95,15 @@ export class HttpService
   //   return this.httpClient.get(this.BOOK_API_URL + '/publisher');
   // }
 
-  // public searchBooks (searchModel: SearchModel): Observable<any>
-  // {
-  //   for (let i in searchModel)
-  //   {
-  //     if (searchModel[i] === null)
-  //       searchModel[i] = '';
-  //   }
+  public searchBooks (searchModel: any): Observable<any>
+  {
+    // remove all null properties
+    const sm = Object.keys(searchModel)
+      .filter((k) => searchModel[k] != null)
+      .reduce((a, k) => ({ ...a, [k]: searchModel[k] }), {});
 
-  //   return this.httpClient.get(this.BOOK_API_URL + '/search', { params: searchModel });
-  // }
+    return this.httpClient.get(this.BOOK_API_URL, { params: sm });
+  }
 
   // public addFavorite ({ bookId, userId }: any): Observable<any>
   // {

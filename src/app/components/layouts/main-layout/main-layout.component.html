@@ -86,8 +86,9 @@
                                 </button>
                             </li>
                             <li>
-                                <button type="button" class="dropdown-item d-flex align-items-center" routerLink="/book">
-                                   Chi tiết sản phẩm
+                                <button type="button" class="dropdown-item d-flex align-items-center"
+                                    routerLink="/book">
+                                    Chi tiết sản phẩm
                                     <span class="bi bi-book-fill ms-auto fs-3"></span>
                                 </button>
                             </li>
@@ -97,17 +98,17 @@
                     <div class="me-lg-2"></div>
 
                     <li class="nav-item dropdown col-6 col-lg-auto d-flex align-items-center">
-                      <button type="button" routerLink="/cart"
-                          class="btn btn-outline-secondary border-light-subtle text-body bg-body-secondary py-2 rounded-circle position-relative"
-                          aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
-                          aria-label="Message">
-                          <span class="bi bi-cart-plus-fill" style="line-height: 0;"></span>
-                          <span class="d-lg-none ms-2">Giỏ hàng</span>
-                          <!-- <span
+                        <button type="button" routerLink="/cart"
+                            class="btn btn-outline-secondary border-light-subtle text-body bg-body-secondary py-2 rounded-circle position-relative"
+                            aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
+                            aria-label="Message">
+                            <span class="bi bi-cart-plus-fill" style="line-height: 0;"></span>
+                            <span class="d-lg-none ms-2">Giỏ hàng</span>
+                            <!-- <span
                               class="position-absolute top-0 mt-1 ms-2 p-2 translate-middle bg-danger border border-light rounded-circle">
                               <span class="visually-hidden">New alerts</span>
                           </span> -->
-                      </button>
+                        </button>
                     </li>
                     <!-- <li class="nav-item py-1 col-12 col-lg-auto">
                         <div class="vr d-none d-lg-flex mx-lg-2 h-100"></div>
@@ -121,7 +122,7 @@
                             type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
                             aria-label="User">
                             <span *ngIf="!isLoggedIn" class="bi bi-person-circle" style="line-height: 0;"></span>
-                            <img *ngIf="isLoggedIn" src="{{(user | async)?.avatarImage}}" alt="Avatar" class="img-fluid"
+                            <img *ngIf="isLoggedIn" src="{{(user | async)?.avatar}}" alt="Avatar" class="img-fluid"
                                 style="max-width: 41px; max-height: 41px; object-fit: cover; object-position: center; aspect-ratio: 1/1; margin: -8px;" />
                             <!-- <span class="d-lg-none ms-2" id="user-panel">Tài khoản</span> -->
                         </button>
@@ -164,8 +165,8 @@
                                     <div class="d-flex gap-3 align-items-center bg-body-secondary rounded-1 p-2">
                                         <img class="img-fluid rounded-circle"
                                             style="max-width: 50px; max-height: 50px; object-fit: cover; object-position: center; aspect-ratio: 1/1;"
-                                            src="{{(user | async)?.avatarImage}}" alt="Avatar">
-                                        <h5 class="card-title m-0 text-wrapped">{{((user | async)?.name
+                                            src="{{(user | async)?.avatar}}" alt="Avatar">
+                                        <h5 class="card-title m-0 text-wrapped">{{(user | async)?.displayName}}
                                         </h5>
                                     </div>
                                 </div>

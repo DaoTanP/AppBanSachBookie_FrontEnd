@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user';
-// import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -19,19 +19,20 @@ export class MainLayoutComponent
   protected isScrolled: boolean = false;
   protected user: Observable<User | undefined> = of(undefined);
 
-  // get isLoggedIn () { return this.authGuardService.isLoggedIn };
-  get isLoggedIn () { return false };
+  get isLoggedIn () { return this.authGuardService.isLoggedIn };
 
-  constructor(private dataService: DataService,
-    // private authGuardService: AuthGuardService,
-    private router: Router)
+  constructor(
+    private dataService: DataService,
+    private authGuardService: AuthGuardService,
+    private router: Router
+  )
   {
     this.switchThemeFunction = this.dataService.getData('switchTheme');
     this.setThemeFunction = this.dataService.getData('setTheme');
     this.getThemeFunction = this.dataService.getData('getTheme');
     this.isDark = this.getTheme();
 
-    // this.user = authGuardService.userData;
+    this.user = authGuardService.userData;
   }
 
   toggleTheme ()
@@ -59,11 +60,11 @@ export class MainLayoutComponent
 
   logOut ()
   {
-    // this.authGuardService.logOut();
-    // let navigateAfterLogOut = this.dataService.getData('navigateAfterLogOut');
+    this.authGuardService.logOut();
+    let navigateAfterLogOut = this.dataService.getData('navigateAfterLogOut');
 
-    // if (navigateAfterLogOut)
-    //   navigateAfterLogOut(this.router);
+    if (navigateAfterLogOut)
+      navigateAfterLogOut(this.router);
     console.log("logged out");
 
   }

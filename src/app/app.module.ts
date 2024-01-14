@@ -15,6 +15,7 @@ import { BookSearchComponent } from './components/book-search/book-search.compon
 import { PaymentsComponent } from './components/payments/payments.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import BookGridComponent from './components/book-grid/book-grid.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     BookSearchComponent,
     PaymentsComponent,
     BookItemComponent,
-    ProfileComponent
+    ProfileComponent,
+    BookGridComponent
   ],
   imports: [
     BrowserModule,

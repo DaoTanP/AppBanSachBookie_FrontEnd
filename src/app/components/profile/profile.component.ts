@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Book } from 'src/app/models/book';
 import { User } from 'src/app/models/user';
 import { AlertService, AlertType } from 'src/app/services/alert.service';
@@ -19,7 +19,6 @@ export class ProfileComponent
   protected waiting: boolean = false;
   protected userInfo: User = new User();
   protected favorites: Book[] = [];
-  protected favoriteAsync: any;
 
   protected displayName: FormControl = new FormControl(null, [Validators.required]);
   protected dateOfBirth: FormControl = new FormControl(null);
@@ -50,34 +49,8 @@ export class ProfileComponent
 
     this.setData();
 
-    // this.getUserInfo();
-
     this.dataService.setData("navigateAfterLogOut", this.logOut);
   }
-
-  // getUserInfo ()
-  // {
-  //   this.waiting = true;
-  //   this.httpService.getUserInfo().subscribe({
-  //     next: res =>
-  //     {
-  //       this.userInfo = res;
-  //     }, error: err =>
-  //     {
-  //       switch (err.status)
-  //       {
-  //         case 0:
-  //           this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
-  //           break;
-
-  //         default:
-  //           this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
-  //           break;
-  //       }
-  //     }
-  //   });
-  //   this.waiting = false;
-  // }
 
   setData ()
   {
@@ -108,16 +81,14 @@ export class ProfileComponent
         }
       }
     });
+    this.getFavorite();
     this.waiting = false;
-    // this.getFavorite();
   }
 
-  // getFavorite ()
-  // {
-  //   this.waiting = true;
-  //   this.favoriteAsync = this.httpService.getFavorite(this.user.id).pipe(map((books: Book[]) => books.map((book: any) => new Book(book.id, book.title, book.category.name, book.image, book.author.name, book.publisher.name, book.publishDate, book.overview, book.numberOfPages))));
-  //   this.favoriteAsync.subscribe((books: any) => this.favorites = books);
-  // }
+  getFavorite ()
+  {
+    this.httpService.getFavorite().subscribe(books => this.favorites = books);
+  }
 
   submitChange ()
   {
@@ -128,7 +99,6 @@ export class ProfileComponent
     const filteredValue = Object.keys(formValue)
       .filter((k) => formValue[k] != null)
       .reduce((a, k) => ({ ...a, [k]: formValue[k] }), {});
-
 
     this.httpService.editUserInfo(filteredValue).subscribe({
       next: res =>
@@ -213,10 +183,8 @@ export class ProfileComponent
       this.httpService.uploadAvatar(fd).subscribe({
         next: res =>
         {
-          this.userInfo.avatar = res.avatar;
-          this.authGuardService.userData = res;
           this.waiting = false;
-          this.alertService.appendAlert('Đổi ảnh đại diện thành công', AlertType.success, 5, 'alert-container');
+          this.alertService.appendAlert('Đổi ảnh đại diện thành công, tải lại trang để xem thay đổi', AlertType.success, 5, 'alert-container');
         },
         error: err =>
         {

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { HttpService } from 'src/app/services/http.service';
 import { AlertService, AlertType } from 'src/app/services/alert.service';
-import { DataService } from 'src/app/services/data.service';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class LoginComponent
 {
   protected waiting: boolean = false;
 
-  protected username: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3)]);
+  protected username: FormControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
   protected password: FormControl = new FormControl(null, [Validators.required, Validators.minLength(8)]);
 
   public loginForm: FormGroup = new FormGroup({
@@ -26,7 +25,6 @@ export class LoginComponent
 
   constructor(
     private httpService: HttpService,
-    private dataService: DataService,
     private alertService: AlertService,
     private authGuardService: AuthGuardService,
     private router: Router,
@@ -57,7 +55,6 @@ export class LoginComponent
       next: async res =>
       {
         this.waiting = false;
-        console.log(res);
 
         this.authGuardService.login(res.accessToken);
         this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',

@@ -66,6 +66,13 @@ export class MainLayoutComponent
     if (navigateAfterLogOut)
       navigateAfterLogOut(this.router);
     console.log("logged out");
+  }
 
+  search (input: string)
+  {
+    if (!input || input === '')
+      return;
+
+    this.router.navigate(['/search'], { queryParams: { title: input } });
   }
 }

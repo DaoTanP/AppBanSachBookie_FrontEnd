@@ -23,7 +23,7 @@
     <div class="card position-relative p-0 border-0 bg-body text-body link w-sm-100 w-auto"
         routerLink="{{href || '/book/' + this.book._id}}" routerLinkActive="active">
         <div class="rounded-2 book-cover-container placeholder-glow" title="{{book.title}}">
-            <img src="{{book.images}}" title="{{book.title}}"
+            <img src="{{book.images[0]}}" title="{{book.title}}"
                 class="card-img-top img-fluid rounded-2 placeholder bg-secondary" alt="book cover" loading="lazy"
                 (load)="imageLoad($event)" (error)="imageError($event)">
         </div>

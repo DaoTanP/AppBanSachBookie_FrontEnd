@@ -75,10 +75,10 @@ export class HttpService
   //   return this.httpClient.get(this.BOOK_API_URL + '/top');
   // }
 
-  // public GetRandomRecommendation (): Observable<any>
-  // {
-  //   return this.httpClient.get(this.BOOK_API_URL + '/randomRecommendation');
-  // }
+  public GetRandom (numberOfBooks = 1): Observable<any>
+  {
+    return this.httpClient.get(this.BOOK_API_URL + '/random?n=' + numberOfBooks);
+  }
 
   public getCategories (): Observable<any>
   {

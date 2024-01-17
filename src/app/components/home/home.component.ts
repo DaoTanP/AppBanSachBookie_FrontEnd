@@ -11,10 +11,12 @@ import { HttpService } from 'src/app/services/http.service';
 export class HomeComponent
 {
   protected bookList: Observable<any> = of([]);
-  protected randomRecommendationList: Observable<any> = of([]);
+  protected headerList: any[] = [];
+  protected randomList: Observable<any> = of([]);
 
   constructor(private httpService: HttpService, private router: Router)
   {
     this.bookList = this.httpService.getBooks();
+    this.httpService.GetRandom(5).subscribe(books => this.headerList = books);
   }
 }

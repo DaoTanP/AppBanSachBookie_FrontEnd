@@ -14,8 +14,9 @@ export class User
         public email: string | null = null,
         public phoneNumber: string | null = null,
         public avatar: string | null = null,
-        public role: string = "buyer",
-        public favoriteBooks: any = [],
+        public favorite: string[] = [],
+        public cart: string[] = [],
+        public order: String[] = []
     )
     {
         if (dateOfBirth)
@@ -37,8 +38,9 @@ export class User
         this.email = v.email;
         this.phoneNumber = v.phoneNumber;
         this.avatar = v.avatar;
-        this.role = v.role;
-        this.favoriteBooks = v.favoriteBooks;
+        this.favorite = v.favorite;
+        this.cart = v.cart;
+        this.order = v.order;
     }
 
 }

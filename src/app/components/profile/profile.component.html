@@ -85,11 +85,6 @@
         </div>
         <div class="tab-pane py-3" id="password-panel" role="tabpanel" aria-labelledby="password-tab">
           <div class="row mb-3">
-            <div class="col-3"><label for="passwordOld" class="form-label ">Nhập mật khẩu cũ</label></div>
-            <div class="col"><input type="password" [ngModel] #passwordOld id="passwordOld" class="form-control">
-            </div>
-          </div>
-          <div class="row mb-3">
             <div class="col-3"><label for="passwordNew2" class="form-label">Nhập mật khẩu mới</label></div>
             <div class="col"><input type="password" [ngModel] #passwordNew2 id="passwordNew2" class="form-control">
             </div>
@@ -102,7 +97,7 @@
           <div class="row">
             <div class="col-3"></div>
             <div class="col">
-              <p>Mật khẩu phải từ ít nhất 8 kí tự trở lên.</p>
+              <p>Mật khẩu phải từ ít nhất 8 kí tự trở lên</p>
             </div>
           </div>
           <div class="row mb-3">
@@ -110,8 +105,7 @@
             <div class="col">
               <button class="btn btn-primary"
                 [disabled]="!passwordNew.value || passwordNew.value !== passwordNew2.value"
-                (click)="changePassword(passwordOld.value, passwordNew.value)">Thay đổi mật
-                khẩu</button>
+                (click)="changePassword(passwordNew.value)">Thay đổi mật khẩu</button>
             </div>
           </div>
         </div>

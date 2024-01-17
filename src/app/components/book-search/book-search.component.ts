@@ -91,12 +91,13 @@ export class BookSearchComponent
   {
     this.bookListAsync.subscribe(books =>
     {
-      const data = books.map((book: any) => new Book(book.id, book.title, book.category.name, book.image, book.author.name, book.publisher.name, book.publishDate, book.overview, book.numberOfPages));
+      const data = books.map((book: Book) => book);
       this.bookList = this.sortData(data, sortBy, sortAscending);
 
       this.totalItems = books.length;
       this.resetPaginationInfo();
     });
+
   }
 
   reset ()

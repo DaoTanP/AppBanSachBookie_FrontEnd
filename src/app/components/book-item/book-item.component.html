@@ -12,7 +12,7 @@
             <h6 class="card-title text-wrapped max-line-2" title="{{book.title}}">{{book.title}}</h6>
             <!-- <p class="card-text text-muted text-wrapped" title="{{book.author}}">{{book.author}}</p> -->
             <p class="card-text"><small class="text-muted text-wrapped"
-                    title="{{book.author?.join(', ')}}">{{book.author?.join(', ')}}</small>
+                    title="{{book.author.join(', ')}}">{{book.author.join(', ')}}</small>
             </p>
         </div>
     </div>
@@ -29,8 +29,8 @@
         </div>
         <div class="card-body p-0">
             <p class="card-text text-wrapped max-line-2 my-1" title="{{book.title}}">{{book.title}}</p>
-            <p class="small text-muted card-text text-wrapped my-1" title="{{book.author?.join(', ')}}">
-                {{book.author?.join(', ')}}</p>
+            <p class="small text-muted card-text text-wrapped my-1" title="{{book.author.join(', ')}}">
+                {{book.author.join(', ')}}</p>
         </div>
 
         <!-- <div class="card-action position-absolute top-0 end-0 m-1 z-3">

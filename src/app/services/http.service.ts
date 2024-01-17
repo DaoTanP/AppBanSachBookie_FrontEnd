@@ -85,16 +85,6 @@ export class HttpService
     return this.httpClient.get(this.BOOK_API_URL + '/category');
   }
 
-  // public getAuthors (): Observable<any>
-  // {
-  //   return this.httpClient.get(this.BOOK_API_URL + '/author');
-  // }
-
-  // public getPublishers (): Observable<any>
-  // {
-  //   return this.httpClient.get(this.BOOK_API_URL + '/publisher');
-  // }
-
   public searchBooks (searchModel: any): Observable<any>
   {
     // remove all null properties
@@ -105,23 +95,20 @@ export class HttpService
     return this.httpClient.get(this.BOOK_API_URL, { params: sm });
   }
 
-  // public addFavorite ({ bookId, userId }: any): Observable<any>
-  // {
-  //   const id = null;
-  //   return this.httpClient.post(this.USER_API_URL + '/addFavorite', { id, bookId, userId });
-  // }
-  // public removeFavorite ({ bookId, userId }: any): Observable<any>
-  // {
-  //   const id = null;
-  //   return this.httpClient.post(this.USER_API_URL + '/removeFavorite', { id, bookId, userId });
-  // }
-  // public isFavorite ({ bookId, userId }: any): Observable<any>
-  // {
-  //   const id = null;
-  //   return this.httpClient.post(this.USER_API_URL + '/isFavorite', { id, bookId, userId });
-  // }
-  // public getFavorite (id: string): Observable<any>
-  // {
-  //   return this.httpClient.get(this.USER_API_URL + `/${id}/favorite`);
-  // }
+  public addFavorite (bookId: any): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + '/addFavorite', { bookId }, { headers: this.requestHeaders });
+  }
+  public removeFavorite (bookId: any): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + '/removeFavorite', { bookId }, { headers: this.requestHeaders });
+  }
+  public isFavorite (bookId: any): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + '/isFavorite', { bookId }, { headers: this.requestHeaders });
+  }
+  public getFavorite (): Observable<any>
+  {
+    return this.httpClient.get(this.USER_API_URL + '/favorite', { headers: this.requestHeaders });
+  }
 }

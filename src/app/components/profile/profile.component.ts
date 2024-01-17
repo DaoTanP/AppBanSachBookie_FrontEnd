@@ -238,43 +238,41 @@ export class ProfileComponent
     r.readAsArrayBuffer(file);
   }
 
-  changePassword (oldPassword: string, newPassword: string)
+  changePassword (newPassword: string)
   {
-    // if (!oldPassword || !newPassword || oldPassword === newPassword)
-    //   return;
+    if (!newPassword)
+      return;
 
-    // const data = {
-    //   username: this.userInfo.username,
-    //   oldPassword: oldPassword,
-    //   newPassword: newPassword,
-    // };
+    const data = {
+      password: newPassword,
+    };
 
-    // this.waiting = true;
+    this.waiting = true;
 
-    // this.httpService.changeUserPassword(data).subscribe({
-    //   next: res =>
-    //   {
-    //     this.waiting = false;
-    //     this.alertService.appendAlert('Thay đổi mật khẩu thành công', AlertType.success, 5, 'alert-container');
-    //   }, error: err =>
-    //   {
-    //     this.waiting = false;
-    //     switch (err.status)
-    //     {
-    //       case 400:
-    //         this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 5, 'alert-container');
-    //         break;
+    this.httpService.editUserInfo(data).subscribe({
+      next: res =>
+      {
+        this.waiting = false;
+        this.alertService.appendAlert('Thay đổi mật khẩu thành công', AlertType.success, 5, 'alert-container');
+      }, error: err =>
+      {
+        this.waiting = false;
+        switch (err.status)
+        {
+          case 400:
+            this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 5, 'alert-container');
+            break;
 
-    //       case 0:
-    //         this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
-    //         break;
+          case 0:
+            this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+            break;
 
-    //       default:
-    //         this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
-    //         break;
-    //     }
-    //   }
-    // });
+          default:
+            this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+            break;
+        }
+      }
+    });
   }
 
   logOut (router: Router)

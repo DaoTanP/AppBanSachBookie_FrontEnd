@@ -10,7 +10,12 @@
   <div class="row">
     <div class="col-md-4 mb-5 mb-md-0">
       <div class="img-container mx-auto mx-xl-5">
-        <img class="img-fluid w-100 rounded-2 book-cover-shadow" src="{{book.images}}" alt="">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+          [config]="{slidesToShow: 1, slidesToScroll: 1, dots: true}">
+          <div ngxSlickItem *ngFor="let image of book.images" class="slide mx-1 pt-2">
+            <img class="img-fluid w-100 rounded-2 book-cover-shadow" src="{{image}}">
+          </div>
+        </ngx-slick-carousel>
       </div>
     </div>
     <div class="col-md">
@@ -26,20 +31,19 @@
         <div class="col">
           <p>{{book.author}}</p>
           <p>{{book.publisher}}</p>
-          <p>{{book.publishDate || 'Không rõ'}}</p>
+          <p>{{publishDate || 'Không rõ'}}</p>
           <p>{{book.numberOfPages}}</p>
         </div>
       </div>
       <div class="mt-3 row">
         <div class="col-12 col-md-auto">
-          <button *ngIf="!cardNumber || !userId" class="btn btn-primary fw-medium btn-block px-4 w-100"
-            (click)="addCart()">Thêm vào giỏ hàng</button>
-          <button *ngIf="cardNumber" [disabled]="waitingForCartAction"
-            class=" btn btn-primary fw-medium btn-block px-4 w-100" data-bs-toggle="modal"
-            data-bs-target="#borrowModal">
+          <button *ngIf="" class="btn btn-primary fw-medium btn-block px-4 w-100" (click)="addCart()">Thêm vào giỏ
+            hàng</button>
+          <button *ngIf="" [disabled]="waitingForCartAction" class=" btn btn-primary fw-medium btn-block px-4 w-100"
+            data-bs-toggle="modal" data-bs-target="#borrowModal">
             <span *ngIf="waitingForCartAction" class="spinner-border spinner-border-sm" role="status"
               aria-hidden="true"></span>
-            Thêm vào giỏ hàng
+            Xóa khỏi giỏ hàng
           </button>
         </div>
         <div class="col-12 col-md-auto">
@@ -69,9 +73,9 @@
   </div>
   <p class="p-2" style="text-align: justify;">{{book.overview}}</p>
 </div>
-<!-- <app-book-scroll-list title="Cùng tác giả" [dataAsync]="fromAuthor"></app-book-scroll-list>
-<app-book-scroll-list title="Có liên quan" [dataAsync]="inCategory"></app-book-scroll-list>
-<app-book-scroll-list [title]="'Từ nhà xuất bản '+book.publisher" [dataAsync]="fromPublisher"></app-book-scroll-list> -->
+<scroll-list title="Cùng tác giả" [dataAsync]="fromAuthor"></scroll-list>
+<scroll-list title="Có liên quan" [dataAsync]="inCategory"></scroll-list>
+<scroll-list title="Cùng nhà xuất bản" [dataAsync]="fromPublisher"></scroll-list>
 <div class="container p-0 mb-5">
   <div class="d-grid gap-2 col-6 mx-auto">
     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalWrite">

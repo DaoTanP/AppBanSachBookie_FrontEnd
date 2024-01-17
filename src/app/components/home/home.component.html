@@ -1,4 +1,4 @@
-<div class="container-fluid bg-body-secondary py-4 mb-5 position-relative"
+<div class="container-fluid bg-body py-4 mb-5 position-relative"
     style="margin-top: -3.5rem; padding-top: 5rem !important; padding-bottom: 5rem !important;">
 
     <div class="container position-relative z-3 mb-5">
@@ -101,14 +101,7 @@
     </div>
 
     <div class="container px-0 mb-5">
-        <div class="row mb-4">
-            <div class="col-auto text-uppercase">
-                <h4>Tiêu đề</h4>
-            </div>
-            <div class="col-2 ms-auto d-none d-md-flex justify-content-end gap-1">
-                <button class="btn mb-0">Xem tất cả</button>
-            </div>
-        </div>
+        <scroll-list title="Sách mới" [dataAsync]="bookList"></scroll-list>
     </div>
 
 </div>

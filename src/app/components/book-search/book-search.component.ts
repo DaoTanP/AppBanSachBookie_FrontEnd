@@ -156,7 +156,7 @@ export class BookSearchComponent
           return bookList.sort((a, b) => b.title.localeCompare(a.title));
         break;
 
-      case 'publishedDate':
+      case 'publishDate':
         if (ascending)
           return bookList.sort((a, b) =>
           {

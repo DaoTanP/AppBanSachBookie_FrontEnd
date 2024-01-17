@@ -15,6 +15,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class BookDetailsComponent
 {
   protected book: Book = new Book();
+  protected publishDate: string | undefined = undefined;
   protected isFavorite: boolean = false;
   protected waitingForFavoriteAction = false;
   protected waitingForCartAction = false;
@@ -45,6 +46,7 @@ export class BookDetailsComponent
       this.httpService.getBooks(id).subscribe(book =>
       {
         this.book = book;
+        this.publishDate = new Date(book.publishDate).toLocaleDateString();
 
         if (authGuardService.isLoggedIn)
           authGuardService.userData.subscribe({

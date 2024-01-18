@@ -17,6 +17,7 @@ export class BookDetailsComponent
   protected book: Book = new Book();
   protected publishDate: string | undefined = undefined;
   protected isFavorite: boolean = false;
+  protected isInCart: boolean = false;
   protected waitingForFavoriteAction = false;
   protected waitingForCartAction = false;
 
@@ -33,6 +34,7 @@ export class BookDetailsComponent
   )
   {
     this.waitingForFavoriteAction = true;
+    this.waitingForCartAction = true;
     this.route.paramMap.subscribe(params =>
     {
       const id = params.get('id') || '';
@@ -53,10 +55,12 @@ export class BookDetailsComponent
             next: res =>
             {
               this.httpService.isFavorite(this.book._id).subscribe(fav => this.isFavorite = fav);
+              this.httpService.isInCart(this.book._id).subscribe(res => this.isInCart = res);
             }
           });
 
         this.waitingForFavoriteAction = false;
+        this.waitingForCartAction = false;
 
         categorySearch.category = this.book.category;
         authorSearch.author = this.book.author;
@@ -112,19 +116,47 @@ export class BookDetailsComponent
       }
     });
   }
-
   addCart ()
   {
-    // if (!this.userId)
-    // {
-    //   this.router.navigate(['/login']);
-    //   return;
-    // }
-    // if (!this.cardNumber)
-    // {
-    //   this.alertService.appendAlert('Vui lòng liên kết thẻ thư viện trước khi mượn sách', AlertType.danger, 10, 'alert-container');
-    //   return;
-    // }
+    if (!this.authGuardService.isLoggedIn)
+    {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.waitingForCartAction = true;
+    this.httpService.addToCart(this.book._id).subscribe({
+      next: res =>
+      {
+        this.waitingForCartAction = false;
+        this.isInCart = true;
+      }, error: err =>
+      {
+        this.waitingForCartAction = false;
+        this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+      }
+    });
   }
 
+  removeCart ()
+  {
+    if (!this.authGuardService.isLoggedIn)
+    {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.waitingForCartAction = true;
+    this.httpService.removeFromCart(this.book._id).subscribe({
+      next: res =>
+      {
+        this.waitingForCartAction = false;
+        this.isInCart = false;
+      }, error: err =>
+      {
+        this.waitingForCartAction = false;
+        this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+      }
+    });
+  }
 }

@@ -27,6 +27,7 @@
           <p>Nhà xuất bản:</p>
           <p>Ngày xuất bản:</p>
           <p>Số trang:</p>
+          <p class="h2 text-danger">{{book.price + " VND"}}</p>
         </div>
         <div class="col">
           <p>{{book.author}}</p>
@@ -37,12 +38,19 @@
       </div>
       <div class="mt-3 row">
         <div class="col-12 col-md-auto">
-          <button *ngIf="" class="btn btn-primary fw-medium btn-block px-4 w-100" (click)="addCart()">Thêm vào giỏ
-            hàng</button>
-          <button *ngIf="" [disabled]="waitingForCartAction" class=" btn btn-primary fw-medium btn-block px-4 w-100"
-            data-bs-toggle="modal" data-bs-target="#borrowModal">
-            <span *ngIf="waitingForCartAction" class="spinner-border spinner-border-sm" role="status"
+          <button *ngIf="!isInCart" [disabled]="waitingForCartAction"
+            class="btn text-primary fw-medium w-100 mt-3 mt-md-0" (click)="addCart()">
+            <span *ngIf="waitingForCartAction" class="spinner-border spinner-border-sm text-primary" role="status"
               aria-hidden="true"></span>
+            <span *ngIf="!waitingForCartAction" class="bi bi-cart"></span>
+            Thêm vào giỏ hàng
+          </button>
+
+          <button *ngIf="isInCart" [disabled]="waitingForCartAction"
+            class="btn text-primary fw-medium w-100 mt-3 mt-md-0" (click)="removeCart()">
+            <span *ngIf="waitingForCartAction" class="spinner-border spinner-border-sm text-primary" role="status"
+              aria-hidden="true"></span>
+            <span *ngIf="!waitingForCartAction" class="bi bi-cart-check-fill"></span>
             Xóa khỏi giỏ hàng
           </button>
         </div>

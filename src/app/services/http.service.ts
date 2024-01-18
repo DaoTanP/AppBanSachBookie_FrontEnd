@@ -70,11 +70,6 @@ export class HttpService
     return this.httpClient.get(this.BOOK_API_URL);
   }
 
-  // public getTopBorrow (): Observable<any>
-  // {
-  //   return this.httpClient.get(this.BOOK_API_URL + '/top');
-  // }
-
   public GetRandom (numberOfBooks = 1): Observable<any>
   {
     return this.httpClient.get(this.BOOK_API_URL + '/random?n=' + numberOfBooks);
@@ -110,5 +105,21 @@ export class HttpService
   public getFavorite (): Observable<any>
   {
     return this.httpClient.get(this.USER_API_URL + '/favorite', { headers: this.requestHeaders });
+  }
+  public addToCart (bookId: any): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + '/addToCart', { bookId }, { headers: this.requestHeaders });
+  }
+  public removeFromCart (bookId: any): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + '/removeFromCart', { bookId }, { headers: this.requestHeaders });
+  }
+  public isInCart (bookId: any): Observable<any>
+  {
+    return this.httpClient.post(this.USER_API_URL + '/isInCart', { bookId }, { headers: this.requestHeaders });
+  }
+  public getCart (): Observable<any>
+  {
+    return this.httpClient.get(this.USER_API_URL + '/cart', { headers: this.requestHeaders });
   }
 }

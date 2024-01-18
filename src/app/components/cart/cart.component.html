@@ -1,4 +1,11 @@
 <div class="container">
+    <div *ngIf="waitingForCartAction" class="position-fixed z-3 bg-body-secondary bg-opacity-50 w-100" style="height: 100%;">
+        <div class="d-flex justify-content-center align-items-center w-100" style="height: 100%;">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
             <div class="table-responsive">
@@ -14,25 +21,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let book of cart">
                             <th scope="row">
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     </div>
-                                    <img routerLink="/book"
-                                        src="https://tramsach.vn/wp-content/uploads/2021/06/12-e1653631534295.png"
-                                        class="img-fluid rounded-3" style="width: 120px;" alt="Book">
+                                    <img routerLink="{{'/book/' + book._id}}"
+                                        src="{{book.images[0]}}"
+                                        class="img-fluid rounded-3" style="width: 120px;" alt="{{book.title}}">
                                     <div class="flex-column ms-4">
-                                        <p class="mb-2">Đắc Nhân Tâm</p>
-                                        <p class="mb-0">Dale Carnegie</p>
+                                        <p class="mb-2">{{book.title}}</p>
+                                        <p class="mb-0">{{book.author.join(', ')}}</p>
                                     </div>
                                 </div>
-
-                                
                             </th>
                             <td class="align-middle">
-                                <p class="mb-0" style="font-weight: 500;">Tiểu Thuyết</p>
+                                <p class="mb-0" style="font-weight: 500;">{{book.category.join(', ')}}</p>
                             </td>
                             <td class="align-middle">
                                 <div class="d-flex flex-row">
@@ -52,53 +57,10 @@
                                 </div>
                             </td>
                             <td class="align-middle">
-                                <p class="mb-0" style="font-weight: 500;">52.725đ</p>
+                                <p class="mb-0" style="font-weight: 500;">{{book.price + " VND"}}</p>
                             </td>
                             <td>
-                                <button class="btn btn-link px-2 btn-primary">
-                                    <i class="bi bi-x-lg"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="border-bottom-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    </div>
-                                    <img src="https://i.imgur.com/Oj1iQUX.webp" class="img-fluid rounded-3"
-                                        style="width: 120px;" alt="Book">
-                                    <div class="flex-column ms-4">
-                                        <p class="mb-2">Homo Deus: A Brief History of Tomorrow</p>
-                                        <p class="mb-0">Yuval Noah Harari</p>
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="align-middle border-bottom-0">
-                                <p class="mb-0" style="font-weight: 500;">Bút Ký</p>
-                            </td>
-                            <td class="align-middle border-bottom-0">
-                                <div class="d-flex flex-row">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button class="btn btn-link px-2 btn-primary"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                            <i class="bi bi-dash-circle-fill"></i>
-                                        </button>
-                                        <input id="form1" min="0" name="quantity" value="2" type="number"
-                                            class="form-control form-control-sm" style="width: 50px;" />
-
-                                        <button class="btn btn-link px-2 btn-primary"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                            <i class="bi bi-plus-circle-fill"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle border-bottom-0">
-                                <p class="mb-0" style="font-weight: 500;">60.548đ</p>
-                            </td>
-                            <td>
-                                <button class="btn btn-link px-2 btn-primary">
+                                <button class="btn btn-link px-2 btn-primary" (click)="removeCart(book._id)">
                                     <i class="bi bi-x-lg"></i>
                                 </button>
                             </td>

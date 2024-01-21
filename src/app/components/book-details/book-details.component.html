@@ -13,7 +13,7 @@
         <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
           [config]="{slidesToShow: 1, slidesToScroll: 1, dots: true}">
           <div ngxSlickItem *ngFor="let image of book.images" class="slide mx-1 pt-2">
-            <img class="img-fluid w-100 rounded-2 book-cover-shadow" src="{{image}}">
+            <img class="img-fluid w-100 rounded-2" src="{{image}}">
           </div>
         </ngx-slick-carousel>
       </div>

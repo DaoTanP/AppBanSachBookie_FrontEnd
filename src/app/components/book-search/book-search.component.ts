@@ -26,7 +26,7 @@ export class BookSearchComponent
   protected itemsPerPage: number = 0;
 
   protected searchForm: FormGroup = new FormGroup({
-    bookTitle: new FormControl(null),
+    title: new FormControl(null),
     categories: new FormArray([]),
     author: new FormControl(null),
     publisher: new FormControl(null),
@@ -123,7 +123,7 @@ export class BookSearchComponent
     // console.log(query.categories);
 
     const queryParams = {
-      title: query.bookTitle,
+      title: query.title,
       category: query.categories,
       author: query.author,
       publisher: query.publisher,

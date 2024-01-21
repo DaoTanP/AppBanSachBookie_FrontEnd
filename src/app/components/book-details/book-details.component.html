@@ -30,7 +30,7 @@
           <p class="h2 text-danger">{{book.price + " VND"}}</p>
         </div>
         <div class="col">
-          <p>{{book.author}}</p>
+          <p>{{book.author.join(', ')}}</p>
           <p>{{book.publisher}}</p>
           <p>{{publishDate || 'Không rõ'}}</p>
           <p>{{book.numberOfPages}}</p>
